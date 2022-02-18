@@ -1,10 +1,9 @@
-const Cors = require('cors');
+const cors = require('cors');
 const express = require("express");
 const axios = require('axios')
 const app = express();
 var bodyParser = require('body-parser')
-var jsonParser = bodyParser.json()
-app.use(jsonParser)
+app.use(cors())
 var allowlist = ['https://retro-reddit.herokuapp.com/']
 var corsOptionsDelegate = function (req, callback) {
     var corsOptions;
@@ -18,7 +17,7 @@ var corsOptionsDelegate = function (req, callback) {
 }
 let port = process.env.PORT || 3000;
 
-app.get('/reddit/:par/:order/:just', Cors(corsOptionsDelegate), async (req, res) => {
+app.get('/reddit/:par/:order/:just', async (req, res) => {
   let para = req.params.par;
   let order = req.params.order;
   let just = req.params.just;
@@ -36,7 +35,7 @@ app.get('/reddit/:par/:order/:just', Cors(corsOptionsDelegate), async (req, res)
   }
 })
 
-app.get('/reddit/comments/:sub/comments/:uid/:txt', Cors(corsOptionsDelegate), async (req, res) => {
+app.get('/reddit/comments/:sub/comments/:uid/:txt', async (req, res) => {
   let sub = req.params.sub;
   let uid = req.params.uid;
   let txt = req.params.txt;
@@ -44,7 +43,7 @@ app.get('/reddit/comments/:sub/comments/:uid/:txt', Cors(corsOptionsDelegate), a
   res.send(resp.data);
 })
 
-app.get('/reddit/comments/:sub/comments/:uid/:txt/:cid', Cors(corsOptionsDelegate), async (req, res) => {
+app.get('/reddit/comments/:sub/comments/:uid/:txt/:cid', async (req, res) => {
   let sub = req.params.sub;
   let uid = req.params.uid;
   let txt = req.params.txt;
