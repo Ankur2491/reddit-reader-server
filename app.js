@@ -5,7 +5,7 @@ const app = express();
 var bodyParser = require('body-parser')
 var jsonParser = bodyParser.json()
 app.use(jsonParser)
-var allowlist = ['https://hacker-board.herokuapp.com', 'http://localhost:4200']
+var allowlist = ['https://retro-reddit.herokuapp.com/']
 var corsOptionsDelegate = function (req, callback) {
     var corsOptions;
     // console.log("HEADER::",req.header('Origin'))
