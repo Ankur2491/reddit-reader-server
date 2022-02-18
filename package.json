@@ -1,19 +1,16 @@
 {
   "name": "reddit-server",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "axios": "^0.26.0",
-    "cookie-parser": "~1.4.4",
+    "axios": "^0.21.1",
     "cors": "^2.8.5",
-    "debug": "~2.6.9",
-    "express": "^4.16.4",
-    "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
-    "morgan": "~1.9.1"
+    "express": "^4.17.1"
   }
 }

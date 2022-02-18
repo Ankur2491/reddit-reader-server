@@ -2,19 +2,7 @@ const cors = require('cors');
 const express = require("express");
 const axios = require('axios')
 const app = express();
-var bodyParser = require('body-parser')
 app.use(cors())
-var allowlist = ['https://retro-reddit.herokuapp.com/']
-var corsOptionsDelegate = function (req, callback) {
-    var corsOptions;
-    // console.log("HEADER::",req.header('Origin'))
-    if (allowlist.indexOf(req.header('Origin')) !== -1) {
-        corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
-    } else {
-        corsOptions = { origin: false } // disable CORS for this request
-    }
-    callback(null, corsOptions) // callback expects two parameters: error and options
-}
 let port = process.env.PORT || 3000;
 
 app.get('/reddit/:par/:order/:just', async (req, res) => {
