@@ -41,7 +41,11 @@ app.get('/reddit/comments/:sub/comments/:uid/:txt', async (req, res) => {
   let uid = req.params.uid;
   let txt = req.params.txt;
   let resp = await axios.get(`https://www.reddit.com/r/${sub}/comments/${uid}/${txt}/.rss`).catch(err => { console.log(err) });
-  res.send(resp.data);
+  if (resp == undefined) {
+    res.send({ "status": "No results found" });
+  }
+  else
+    res.send(resp.data);
 })
 
 app.get('/reddit/comments/:sub/comments/:uid/:txt/:cid', async (req, res) => {
@@ -50,7 +54,11 @@ app.get('/reddit/comments/:sub/comments/:uid/:txt/:cid', async (req, res) => {
   let txt = req.params.txt;
   let cid = req.params.cid;
   let resp = await axios.get(`https://www.reddit.com/r/${sub}/comments/${uid}/${txt}/${cid}/.rss`).catch(err => { console.log(err) });
-  res.send(resp.data);
+  if (resp == undefined) {
+    res.send({ "status": "No results found" });
+  }
+  else
+    res.send(resp.data);
 })
 app.listen(port, () => {
   console.log(`Example app is listening on port http://localhost:${port}`)
