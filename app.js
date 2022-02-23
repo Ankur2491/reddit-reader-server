@@ -19,7 +19,7 @@ app.get('/reddit/:par/:order/:just', async (req, res) => {
       res.send(resp.data);
   }
   else if (order == 'hot' && just == "false") {
-    let resp = await axios.get(`https://www.reddit.com/r/${para}/.json`).catch(err => { console.log("err:",err) });
+    let resp = await axios.get(`https://www.reddit.com/r/${para}/.rss`).catch(err => { console.log("err:",err) });
     if (resp == undefined) {
       res.send({ "status": "No results found" });
     }
