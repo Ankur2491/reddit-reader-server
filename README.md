@@ -1,1 +1,1 @@
-# reddit-reader-server
+# reddit-reader-api-server
